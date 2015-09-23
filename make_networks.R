@@ -22,7 +22,8 @@ make.networks <- function(plantas, aves, dens = 0.2, runs = 1000) {
   }
   
   ## Ambos
-  links <- ifelse(links.morpho & links.strata, 1, 0)
+  ## links <- ifelse(links.morpho & links.strata, 1, 0)
+  links <- links.morpho
   
   ## Tirar as espécies sem ligações
   
@@ -30,7 +31,6 @@ make.networks <- function(plantas, aves, dens = 0.2, runs = 1000) {
   rowsums <- rowSums(links)
   
   nomes.plantas <- tolower(unique(plantas$species)[rowsums > 0])
-  # Pedir pra Jamille arrumar o nome dessa coluna
   nomes.aves <- tolower(unique(aves$specie)[colsums > 0])
   
   links <- links[rowsums > 0, colsums > 0]
